@@ -1,0 +1,12 @@
+[build]
+command = "npm install && npm run build"
+publish = "dist"
+
+[functions]
+directory = "netlify/functions"
+node_runtime - "nodejs20.x"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+staus = 200
