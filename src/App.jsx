@@ -1,27 +1,38 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Payments from "./pages/Payments";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function Home() {
+// Simple Home Component (Your Landing Page)
+const Home = () => (
+  <div style={{ textAlign: 'center', padding: '50px' }}>
+    <h1>Intelligent Agility</h1>
+    <img 
+      src="/solutions-graphic.png" 
+      alt="Solutions Graphic" 
+      style={{ maxWidth: '100%', height: 'auto' }} 
+    />
+    <br />
+    <a href="/payment" style={{ fontSize: '20px', color: 'blue' }}>Book a Session</a>
+  </div>
+);
+
+// Simple Payment Component (Your Stripe Page)
+const Payment = () => (
+  <div style={{ textAlign: 'center', padding: '50px' }}>
+    <h1>Secure Payment</h1>
+    <p>Connecting to Stripe...</p>
+    {/* Your Stripe Elements code will go here eventually */}
+  </div>
+);
+
+function App() {
   return (
-    <div style={{ padding: "3rem" }}>
-      <h1>Consulting & Digital Products</h1>
-      <p>Secure payments via Stripe</p>
-    </div>
-  );
-}
-
-export default function App() {
-  return (
-    <BrowserRouter>
-      <nav style={{ padding: "1rem", borderBottom: "1px solid #ddd" }}>
-        <Link to="/" style={{ marginRight: 16 }}>Home</Link>
-        <Link to="/payments">Payments</Link>
-      </nav>
-
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/payments" element={<Payments />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
+
+export default App;
