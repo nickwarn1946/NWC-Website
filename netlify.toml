@@ -4,7 +4,7 @@ publish = "dist"
 
 [functions]
 directory = "netlify/functions"
-node_runtime - "nodejs20.x"
+node_runtime = "nodejs20.x"
 
 [[redirects]]
 from = "/*"
