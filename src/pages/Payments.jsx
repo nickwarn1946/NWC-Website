@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 const Payments = () => {
   const [loading, setLoading] = useState(false);
 
@@ -32,6 +32,9 @@ const Payments = () => {
 
   return (
     <div style={{ padding: '40px', textAlign: 'center', fontFamily: 'sans-serif' }}>
+       <Link to="/" style={{ color: '#0070f3', textDecoration: 'none', display: 'inline-block', marginBottom: '20px' }}>
+        ← Back to Home
+      </Link>
       <h1>Book a Session</h1>
       <p>Select your consulting package below.</p>
       
