@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // 1. Tell Vite the name of your GitHub Repository
-  base: '/YOUR-REPOSITORY-NAME/', 
+  base: '/NWC-Website/', 
   server: {
     port: 3000,
   }
