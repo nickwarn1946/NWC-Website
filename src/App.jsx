@@ -6,7 +6,7 @@ const Home = () => (
   <div style={{ textAlign: 'center', padding: '50px' }}>
     <h1>Intelligent Agility</h1>
     <img 
-      src="/solutions-graphic.jpg" 
+      src="/solutions.jpg" 
       alt="Solutions Graphic" 
       style={{ maxWidth: '100%', height: 'auto' }} 
     />
