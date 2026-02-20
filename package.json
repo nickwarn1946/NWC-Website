@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://nickwarn1946.github.io/nick-warn-consulting",
+  "homepage": "https://nickwarn1946.github.io/NWC-Website",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
