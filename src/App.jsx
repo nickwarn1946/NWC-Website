@@ -26,6 +26,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/payments" element={<Payment />} />
+        <Route path="/success" element={<Success />} />
+<Route path="/cancel" element={<Cancel />} />
       </Routes>
     </Router>
   );
