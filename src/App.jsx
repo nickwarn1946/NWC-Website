@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Payment from './pages/payments'; 
+import Payment from './pages/Payments'; 
 
 const Home = () => (
   <div style={{ textAlign: 'center', padding: '50px' }}>
@@ -12,7 +12,7 @@ const Home = () => (
       style={{ maxWidth: '100%', height: 'auto' }} 
     />
     <br />
-    {/* We use #/payment to help GitHub find the page easier */}
+    
     <a href="/payment" style={{ fontSize: '20px', color: 'blue', display: 'block', marginTop: '20px' }}>
       Book a Session
     </a>
@@ -24,7 +24,7 @@ function App() {
     <Router basename="/NWC-Website">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment" element={<Payments />} />
       </Routes>
     </Router>
   );
