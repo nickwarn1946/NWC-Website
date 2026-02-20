@@ -3,17 +3,20 @@ import React from 'react';
 export default function Payment() {
   const pay = async (product) => {
     try {
-      // Note: This requires Netlify functions to work properly later
-      const res = await fetch("/.netlify/functions/create-checkout", {
-        method: "POST",
-        body: JSON.stringify(product)
-      });
-      const data = await res.json();
-      window.location.href = data.url;
-    } catch (error) {
-      console.error("Payment error:", error);
-      alert("Payment system is not connected yet. (Requires Netlify hosting)");
-    }
+      
+      const response = await fetch('/.netlify/functions/create-checkout', {
+  method: 'POST',
+  body: JSON.stringify({ name: "Consulting Session", amount: 250000 }) // £2,500
+});
+
+const data = await response.json();
+console.log("Response from Netlify:", data); // This will show in your console!
+
+if (data.url) {
+  window.location.href = data.url;
+} else {
+  alert("Error: Stripe did not return a URL. Check console for details.");
+}
   };
 
   return (
