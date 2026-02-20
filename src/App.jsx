@@ -1,7 +1,8 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Payment from './pages/Payments'; 
-
+import Success from './pages/Success';
+import Cancel from './pages/Cancel';
 const Home = () => (
   <div style={{ textAlign: 'center', padding: '50px', fontFamily: 'sans-serif' }}>
     <h1>Intelligent Agility</h1>
