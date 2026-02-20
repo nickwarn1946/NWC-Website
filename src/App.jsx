@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// This line below connects your real payment file!
+
 import Payment from './pages/payments'; 
 
 const Home = () => (
