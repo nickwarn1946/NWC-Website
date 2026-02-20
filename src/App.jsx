@@ -1,5 +1,6 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+// Added 'Link' to the import list below
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Payment from './pages/Payments'; 
 
 const Home = () => (
@@ -11,12 +12,13 @@ const Home = () => (
       style={{ maxWidth: '100%', height: 'auto', marginTop: '20px' }} 
     />
     <br />
-    <a 
-      href="#/payments" 
-      style={{ fontSize: '20px', color: 'blue', display: 'inline-block', marginTop: '30px' }}
+    {/* CHANGED: Using <Link to="/payments"> instead of <a href="#/payments"> */}
+    <Link 
+      to="/payments" 
+      style={{ fontSize: '20px', color: 'blue', display: 'inline-block', marginTop: '30px', textDecoration: 'none', border: '1px solid blue', padding: '10px 20px', borderRadius: '5px' }}
     >
       Book a Session
-    </a>
+    </Link>
   </div>
 );
 
