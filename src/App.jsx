@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-// --- THE HOME PAGE (Kept exactly as you designed it) ---
+// --- THE HOME PAGE (Consistent Design) ---
 const Home = () => (
   <div style={{ backgroundColor: '#2b3034', minHeight: '100vh', fontFamily: '"Roboto", sans-serif', display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#ffffff', padding: '40px 20px' }}>
     <style>{`@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');`}</style>
@@ -35,7 +35,7 @@ const Home = () => (
   </div>
 );
 
-// --- THE UPDATED PAYMENTS PAGE WITH TWO OPTIONS ---
+// --- UPDATED PAYMENTS PAGE ---
 const PaymentPage = () => {
   const cardStyle = {
     background: 'rgba(255, 255, 255, 0.05)',
@@ -72,45 +72,40 @@ const PaymentPage = () => {
           select an option below
         </p>
 
-        {/* GRID CONTAINER FOR OPTIONS */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-          gap: '30px', 
-          marginBottom: '50px' 
-        }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', marginBottom: '50px' }}>
           
-          {/* OPTION 1: INTRO SESSION */}
           <div style={cardStyle}>
             <div>
               <h3 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>Introductory Session</h3>
-              <p style={{ color: '#4a90e2', fontWeight: '700', fontSize: '1.1rem', marginBottom: '15px' }}>1 Hour • Online</p>
+              <p style={{ color: '#4a90e2', fontWeight: '700', fontSize: '1.1rem', marginBottom: '15px' }}>1 Hour • Online Consultation</p>
               <p style={{ color: '#d1d9e0', lineHeight: '1.6', fontSize: '0.95rem' }}>
-                A focused consultation to apply the Dragonfly Model to a specific organizational challenge. We will identify weak signals and map out immediate adaptive movements.
+                A focused session to apply the Dragonfly Model to your specific challenges. We will identify weak signals and map adaptive movements.
               </p>
             </div>
-            <a href="https://outlook.office.com/bookings/" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
-              Book & Pay
-            </a>
+            <a href="mailto:nick@example.com?subject=Introductory Session Inquiry" style={buttonStyle}>Enquire to Book</a>
           </div>
 
-          {/* OPTION 2: HALF-DAY WORKSHOP */}
           <div style={cardStyle}>
             <div>
               <h3 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>Strategic Agility Workshop</h3>
-              <p style={{ color: '#4a90e2', fontWeight: '700', fontSize: '1.1rem', marginBottom: '15px' }}>3.5 Hours • Intensive</p>
+              <p style={{ color: '#4a90e2', fontWeight: '700', fontSize: '1.1rem', marginBottom: '15px' }}>3.5 Hours • Leadership Intensive</p>
               <p style={{ color: '#d1d9e0', lineHeight: '1.6', fontSize: '0.95rem' }}>
-                An immersive deep-dive for leadership teams. We integrate all four Dragonfly capabilities to build a coherent strategy for navigating complexity and change.
+                An immersive deep-dive for teams. We integrate all four Dragonfly capabilities to build a strategy for navigating complexity.
               </p>
             </div>
-            <a href="https://outlook.office.com/bookings/" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
-              Book & Pay
-            </a>
+            <a href="mailto:nick@example.com?subject=Workshop Inquiry" style={buttonStyle}>Enquire to Book</a>
           </div>
 
         </div>
 
-        <Link to="/" style={{ color: '#aab7c4', textDecoration: 'none', fontSize: '0.9rem' }}>
+        {/* TRUST SIGNAL SECTION FOR STRIPE */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '30px', color: '#aab7c4', fontSize: '0.9rem' }}>
+          <p style={{ marginBottom: '10px' }}>For billing inquiries or custom consulting packages, please contact:</p>
+          <p style={{ color: '#ffffff', fontWeight: '700' }}>[Insert Your Email Here]</p>
+          <p style={{ marginTop: '20px' }}>All sessions are subject to our standard terms of service. Refunds available with 48 hours notice.</p>
+        </div>
+
+        <Link to="/" style={{ display: 'block', marginTop: '40px', color: '#aab7c4', textDecoration: 'none', fontSize: '0.9rem' }}>
           ← Back to Overview
         </Link>
       </div>
