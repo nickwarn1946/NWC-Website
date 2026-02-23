@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-// --- THE HOME PAGE (No changes) ---
+// --- THE HOME PAGE (Kept exactly as you designed it) ---
 const Home = () => (
   <div style={{ backgroundColor: '#2b3034', minHeight: '100vh', fontFamily: '"Roboto", sans-serif', display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#ffffff', padding: '40px 20px' }}>
     <style>{`@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');`}</style>
@@ -35,65 +35,91 @@ const Home = () => (
   </div>
 );
 
-// --- THE UPDATED PAYMENTS PAGE WITH OPTION BOX ---
-const PaymentPage = () => (
-  <div style={{ backgroundColor: '#2b3034', minHeight: '100vh', fontFamily: '"Roboto", sans-serif', display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#ffffff', padding: '40px 20px' }}>
-    <div style={{ background: 'linear-gradient(145deg, #1c3359, #162a4a)', padding: '60px 40px', borderRadius: '24px', boxShadow: '0 25px 60px rgba(0,0,0,0.5)', textAlign: 'center', maxWidth: '900px', width: '100%', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-      
-      <h2 style={{ fontSize: '2.2rem', margin: '0 0 10px 0', fontWeight: '700', lineHeight: '1.2' }}>
-        Find out more about the Dragonfly Strategy Model
-      </h2>
-      <p style={{ fontSize: '1.2rem', color: '#aab7c4', marginBottom: '40px', fontWeight: '400' }}>
-        select an option below
-      </p>
+// --- THE UPDATED PAYMENTS PAGE WITH TWO OPTIONS ---
+const PaymentPage = () => {
+  const cardStyle = {
+    background: 'rgba(255, 255, 255, 0.05)',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    borderRadius: '15px',
+    padding: '30px',
+    textAlign: 'left',
+    boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  };
 
-      {/* SERVICE OPTION BOX */}
-      <div style={{ 
-        background: 'rgba(255, 255, 255, 0.05)', 
-        border: '1px solid rgba(255, 255, 255, 0.1)', 
-        borderRadius: '15px', 
-        padding: '30px', 
-        textAlign: 'left', 
-        maxWidth: '500px', 
-        margin: '0 auto 40px auto',
-        boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
-      }}>
-        <h3 style={{ fontSize: '1.5rem', marginBottom: '10px', color: '#ffffff' }}>Introductory Session</h3>
-        <p style={{ color: '#4a90e2', fontWeight: '700', fontSize: '1.2rem', marginBottom: '15px' }}>1 Hour • £ [Add Price]</p>
-        <p style={{ color: '#d1d9e0', marginBottom: '25px', lineHeight: '1.5' }}>
-          A deep dive into the Dragonfly Model applied to your specific organisational challenges. Explore multi-perspective vision and adaptive movement in real-time.
-        </p>
+  const buttonStyle = {
+    backgroundColor: '#ffffff',
+    color: '#1c3359',
+    padding: '12px 20px',
+    borderRadius: '8px',
+    textDecoration: 'none',
+    fontWeight: '700',
+    textAlign: 'center',
+    boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+    marginTop: '20px'
+  };
+
+  return (
+    <div style={{ backgroundColor: '#2b3034', minHeight: '100vh', fontFamily: '"Roboto", sans-serif', display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#ffffff', padding: '40px 20px' }}>
+      <div style={{ background: 'linear-gradient(145deg, #1c3359, #162a4a)', padding: '60px 40px', borderRadius: '24px', boxShadow: '0 25px 60px rgba(0,0,0,0.5)', textAlign: 'center', maxWidth: '1000px', width: '100%', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
         
-        {/* EXTERNAL BOOKING LINK */}
-        <a 
-          href="https://outlook.office.com/bookings/" // REPLACE WITH YOUR LINK
-          target="_blank" 
-          rel="noopener noreferrer"
-          style={{ 
-            backgroundColor: '#ffffff', 
-            color: '#1c3359', 
-            padding: '12px 25px', 
-            borderRadius: '8px', 
-            textDecoration: 'none', 
-            fontWeight: '700',
-            display: 'block',
-            textAlign: 'center',
-            boxShadow: '0 4px 10px rgba(0,0,0,0.2)'
-          }}
-        >
-          Book and Pay via Outlook
-        </a>
-      </div>
+        <h2 style={{ fontSize: '2.2rem', margin: '0 0 10px 0', fontWeight: '700', lineHeight: '1.2' }}>
+          Find out more about the Dragonfly Strategy Model
+        </h2>
+        <p style={{ fontSize: '1.2rem', color: '#aab7c4', marginBottom: '40px', fontWeight: '400' }}>
+          select an option below
+        </p>
 
-      <Link to="/" style={{ color: '#aab7c4', textDecoration: 'none', fontSize: '0.9rem' }}>
-        ← Back to Overview
-      </Link>
+        {/* GRID CONTAINER FOR OPTIONS */}
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+          gap: '30px', 
+          marginBottom: '50px' 
+        }}>
+          
+          {/* OPTION 1: INTRO SESSION */}
+          <div style={cardStyle}>
+            <div>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>Introductory Session</h3>
+              <p style={{ color: '#4a90e2', fontWeight: '700', fontSize: '1.1rem', marginBottom: '15px' }}>1 Hour • Online</p>
+              <p style={{ color: '#d1d9e0', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                A focused consultation to apply the Dragonfly Model to a specific organizational challenge. We will identify weak signals and map out immediate adaptive movements.
+              </p>
+            </div>
+            <a href="https://outlook.office.com/bookings/" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
+              Book & Pay
+            </a>
+          </div>
+
+          {/* OPTION 2: HALF-DAY WORKSHOP */}
+          <div style={cardStyle}>
+            <div>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>Strategic Agility Workshop</h3>
+              <p style={{ color: '#4a90e2', fontWeight: '700', fontSize: '1.1rem', marginBottom: '15px' }}>3.5 Hours • Intensive</p>
+              <p style={{ color: '#d1d9e0', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                An immersive deep-dive for leadership teams. We integrate all four Dragonfly capabilities to build a coherent strategy for navigating complexity and change.
+              </p>
+            </div>
+            <a href="https://outlook.office.com/bookings/" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
+              Book & Pay
+            </a>
+          </div>
+
+        </div>
+
+        <Link to="/" style={{ color: '#aab7c4', textDecoration: 'none', fontSize: '0.9rem' }}>
+          ← Back to Overview
+        </Link>
+      </div>
+      <footer style={{ marginTop: 'auto', padding: '60px 0', color: '#6c757d', fontSize: '0.9rem', textAlign: 'center' }}>
+        <p>© 2026 Nick Warn Consulting. All rights reserved.</p>
+      </footer>
     </div>
-    <footer style={{ marginTop: 'auto', padding: '60px 0', color: '#6c757d', fontSize: '0.9rem', textAlign: 'center' }}>
-      <p>© 2026 Nick Warn Consulting. All rights reserved.</p>
-    </footer>
-  </div>
-);
+  );
+};
 
 function App() {
   return (
