@@ -74,23 +74,26 @@ const Home = () => (
         </p>
       </div>
 
-      {/* Booking Button */}
-      <Link 
-        to="/payments" 
-        style={{ 
-          backgroundColor: '#ffffff', 
-          color: '#1c3359',
-          padding: '18px 60px',
-          borderRadius: '10px',
-          textDecoration: 'none',
-          fontSize: '1.2rem',
-          fontWeight: '600',
-          display: 'inline-block',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.3)'
-        }}
-      >
-        Book a Session
-      </Link>
+      {/* The Updated Link Button */}
+      <div style={{ marginTop: '20px' }}>
+        <Link 
+          to="/payments" 
+          style={{ 
+            backgroundColor: '#ffffff', 
+            color: '#1c3359',
+            padding: '18px 50px',
+            borderRadius: '10px',
+            textDecoration: 'none',
+            fontSize: '1.2rem',
+            fontWeight: '600',
+            display: 'inline-block',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+            transition: 'transform 0.2s ease'
+          }}
+        >
+          If you'd like to learn more, click here.
+        </Link>
+      </div>
     </div>
 
     {/* Professional Footer */}
@@ -110,6 +113,4 @@ function App() {
       </Routes>
     </Router>
   );
-}
-
-export default App;
+          }
