@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-// --- THE HOME PAGE (Consistent Design) ---
+// --- THE HOME PAGE ---
 const Home = () => (
   <div style={{ backgroundColor: '#2b3034', minHeight: '100vh', fontFamily: '"Roboto", sans-serif', display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#ffffff', padding: '40px 20px' }}>
     <style>{`@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');`}</style>
@@ -35,7 +35,7 @@ const Home = () => (
   </div>
 );
 
-// --- UPDATED PAYMENTS PAGE ---
+// --- THE PAYMENTS PAGE ---
 const PaymentPage = () => {
   const cardStyle = {
     background: 'rgba(255, 255, 255, 0.05)',
@@ -82,7 +82,8 @@ const PaymentPage = () => {
                 A focused session to apply the Dragonfly Model to your specific challenges. We will identify weak signals and map adaptive movements.
               </p>
             </div>
-            <a href="mailto:nick@example.com?subject=Introductory Session Inquiry" style={buttonStyle}>Enquire to Book</a>
+            {/* REPLACE THE LINK BELOW WITH YOUR BOOKING URL */}
+            <a href="PASTE_YOUR_BOOKING_LINK_HERE" target="_blank" rel="noopener noreferrer" style={buttonStyle}>Book & Pay</a>
           </div>
 
           <div style={cardStyle}>
@@ -93,25 +94,22 @@ const PaymentPage = () => {
                 An immersive deep-dive for teams. We integrate all four Dragonfly capabilities to build a strategy for navigating complexity.
               </p>
             </div>
-            <a href="mailto:nick@example.com?subject=Workshop Inquiry" style={buttonStyle}>Enquire to Book</a>
+            {/* REPLACE THE LINK BELOW WITH YOUR BOOKING URL */}
+            <a href="PASTE_YOUR_BOOKING_LINK_HERE" target="_blank" rel="noopener noreferrer" style={buttonStyle}>Book & Pay</a>
           </div>
 
         </div>
 
-        {/* TRUST SIGNAL SECTION FOR STRIPE */}
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '30px', color: '#aab7c4', fontSize: '0.9rem' }}>
-          <p style={{ marginBottom: '10px' }}>For billing inquiries or custom consulting packages, please contact:</p>
-          <p style={{ color: '#ffffff', fontWeight: '700' }}>[Insert Your Email Here]</p>
-          <p style={{ marginTop: '20px' }}>All sessions are subject to our standard terms of service. Refunds available with 48 hours notice.</p>
+        {/* STRIPE COMPLIANCE FOOTER */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '30px', color: '#aab7c4', fontSize: '0.85rem' }}>
+          <p style={{ marginBottom: '10px' }}>All transactions are processed securely. Cancellations made more than 48 hours in advance are eligible for a full refund.</p>
+          <p>© 2026 Nick Warn Consulting. All rights reserved.</p>
         </div>
 
         <Link to="/" style={{ display: 'block', marginTop: '40px', color: '#aab7c4', textDecoration: 'none', fontSize: '0.9rem' }}>
           ← Back to Overview
         </Link>
       </div>
-      <footer style={{ marginTop: 'auto', padding: '60px 0', color: '#6c757d', fontSize: '0.9rem', textAlign: 'center' }}>
-        <p>© 2026 Nick Warn Consulting. All rights reserved.</p>
-      </footer>
     </div>
   );
 };
