@@ -13,9 +13,10 @@ const Home = () => (
     color: '#ffffff',
     padding: '40px 20px'
   }}>
-    {/* Import Roboto via CSS */}
+    {/* Loading Roboto Font */}
     <style>{`@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');`}</style>
 
+    {/* Main Container */}
     <div style={{
       background: 'linear-gradient(145deg, #1c3359, #162a4a)', 
       padding: '60px 40px',
@@ -27,18 +28,42 @@ const Home = () => (
       border: '1px solid rgba(255, 255, 255, 0.05)'
     }}>
       
-      <h1 style={{ fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '5px', color: '#4a90e2', marginBottom: '15px', fontWeight: '700' }}>
+      {/* Top Line */}
+      <h1 style={{ 
+        fontSize: '1rem', 
+        textTransform: 'uppercase', 
+        letterSpacing: '5px', 
+        color: '#4a90e2', 
+        marginBottom: '15px', 
+        fontWeight: '700' 
+      }}>
         Nick Warn Consulting
       </h1>
 
-      <h2 style={{ fontSize: '2.5rem', margin: '0', fontWeight: '700', lineHeight: '1.2', letterSpacing: '0.5px' }}>
+      {/* Main Branding - Bold & Compact */}
+      <h2 style={{ 
+        fontSize: '2.5rem', 
+        margin: '0', 
+        fontWeight: '700', 
+        lineHeight: '1.2',
+        letterSpacing: '0.5px'
+      }}>
         Intelligent Agility
       </h2>
 
-      <p style={{ fontSize: '1.2rem', color: '#aab7c4', marginTop: '15px', marginBottom: '45px', fontWeight: '400', fontStyle: 'italic' }}>
+      {/* The Strap Line */}
+      <p style={{ 
+        fontSize: '1.2rem', 
+        color: '#aab7c4', 
+        marginTop: '15px', 
+        marginBottom: '45px', 
+        fontWeight: '400', 
+        fontStyle: 'italic' 
+      }}>
         Strategic Consulting for an Uncertain World
       </p>
 
+      {/* Solutions Graphic */}
       <div style={{ marginBottom: '50px', overflow: 'hidden', borderRadius: '15px' }}>
         <img 
           src="./solutions.jpg" 
@@ -47,7 +72,8 @@ const Home = () => (
         />
       </div>
 
-      <div style={{ textAlign: 'left', lineHeight: '1.6', color: '#d1d9e0', marginBottom: '50px' }}>
+      {/* Dragonfly Model Section - WITH YOUR EXACT WORDING */}
+      <div style={{ textAlign: 'left', lineHeight: '1.8', color: '#d1d9e0', marginBottom: '50px' }}>
         <h3 style={{ fontSize: '1.8rem', color: '#ffffff', marginBottom: '10px', textAlign: 'center', fontWeight: '700' }}>
           The Dragonfly Model
         </h3>
@@ -55,15 +81,18 @@ const Home = () => (
           Four capabilities. Infinite adaptability.
         </p>
         
-        <p style={{ marginBottom: '30px', fontSize: '1.1rem' }}>
-          The Model rests on four integrated capabilities that together produce organizational agility no single capability can achieve alone.
+        <p style={{ marginBottom: '30px', fontSize: '1.1rem', fontWeight: '400' }}>
+          The Model rests on four integrated capabilities, together producing organisational agility that no single capability can achieve alone.
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '25px' }}>
-          <p><strong style={{ color: '#ffffff' }}>Multi-perspective vision</strong> teaches leaders to see systems rather than symptoms...</p>
-          <p><strong style={{ color: '#ffffff' }}>Adaptive movement</strong> enables organizations to change direction without creating chaos...</p>
-          <p><strong style={{ color: '#ffffff' }}>Purposeful focus</strong> ensures that agility serves meaning rather than merely reacting to noise...</p>
-          <p><strong style={{ color: '#ffffff' }}>Collaborative flight</strong> builds the trust-based relationships...</p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '30px' }}>
+          <p>Multi-perspective vision teaches leaders to see systems rather than symptoms, to detect weak signals before they become obvious trends, to perceive threats and opportunities that narrower vision would miss entirely.</p>
+          
+          <p>Adaptive movement enables organisations to change direction without creating chaos—to pivot with precision rather than lurch from crisis to crisis, to move faster than competitors while maintaining strategic coherence.</p>
+          
+          <p>Purposeful focus ensures that agility serves meaning rather than merely reacting to noise—that organizations know what matters, pursue it relentlessly, and resist the distractions that fragment attention and dissipate energy.</p>
+          
+          <p>Collaborative flight builds the trust-based relationships—across cultures, sectors, and stakeholder groups—that enable coordinated action in environments too complex for any single actor to navigate alone.</p>
         </div>
 
         <p style={{ marginTop: '40px', fontSize: '1.2rem', textAlign: 'center', fontStyle: 'italic', color: '#ffffff', fontWeight: '300' }}>
@@ -71,6 +100,7 @@ const Home = () => (
         </p>
       </div>
 
+      {/* UPDATED BUTTON: Dark Warm Grey with White Text */}
       <div style={{ marginTop: '20px' }}>
         <Link 
           to="/payments" 
@@ -92,6 +122,7 @@ const Home = () => (
       </div>
     </div>
 
+    {/* Professional Footer */}
     <footer style={{ marginTop: 'auto', padding: '60px 0', color: '#6c757d', fontSize: '0.9rem', textAlign: 'center' }}>
       <p>Strategic Business Solutions & Agility Coaching</p>
       <p>© 2026 Nick Warn Consulting. All rights reserved.</p>
@@ -99,12 +130,12 @@ const Home = () => (
   </div>
 );
 
-// --- THE PAYMENTS PAGE (TEMPORARY PLACEHOLDER TO PASS BUILD) ---
+// --- THE PAYMENTS PAGE (STUB) ---
 const PaymentPage = () => (
   <div style={{ backgroundColor: '#2b3034', minHeight: '100vh', color: '#ffffff', padding: '50px', textAlign: 'center', fontFamily: '"Roboto", sans-serif' }}>
-    <h1>Payments & Services</h1>
-    <p>We are currently updating our session bookings. Please check back shortly.</p>
-    <Link to="/" style={{ color: '#4a90e2' }}>Return Home</Link>
+    <h1 style={{ fontWeight: '700' }}>Payments & Services</h1>
+    <p>Designing your session booking experience...</p>
+    <Link to="/" style={{ color: '#4a90e2', textDecoration: 'none', fontWeight: '700' }}>← Return Home</Link>
   </div>
 );
 
