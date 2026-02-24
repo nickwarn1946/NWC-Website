@@ -1,4 +1,3 @@
-[build]
+[[build]
   publish = "public"
   command = ""
-  ignore = "exit 0"
