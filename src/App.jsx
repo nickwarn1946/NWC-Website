@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { InlineWidget, useCalendlyEventListener } from "react-calendly";
 
 // --- SHARED FOOTER COMPONENT ---
 const Footer = () => (
@@ -42,34 +43,45 @@ const Home = () => (
   </div>
 );
 
-// --- THE PAYMENTS PAGE ---
+// --- THE PAYMENTS PAGE (NOW WITH EMBEDDED CALENDLY) ---
 const PaymentPage = () => {
-  const cardStyle = { background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '15px', padding: '30px', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' };
-  const buttonStyle = { backgroundColor: '#ffffff', color: '#1c3359', padding: '12px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: '700', textAlign: 'center', marginTop: '20px' };
+  const [isBooked, setIsBooked] = useState(false);
+
+  // Detects when the user finishes the booking and payment
+  useCalendlyEventListener({
+    onEventScheduled: (e) => setIsBooked(true),
+  });
 
   return (
     <div style={{ backgroundColor: '#2b3034', minHeight: '100vh', fontFamily: '"Roboto", sans-serif', display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#ffffff', padding: '40px 20px' }}>
       <div style={{ background: 'linear-gradient(145deg, #1c3359, #162a4a)', padding: '60px 40px', borderRadius: '24px', maxWidth: '1000px', width: '100%', border: '1px solid rgba(255, 255, 255, 0.05)', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '2.2rem', fontWeight: '700', marginBottom: '40px' }}>Dragonfly Strategy Sessions</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', marginBottom: '50px' }}>
-          <div style={cardStyle}>
-            <div>
-              <h3 style={{ fontSize: '1.5rem' }}>Introductory Session</h3>
-              <p style={{ color: '#4a90e2', fontWeight: '700' }}>1 Hour • Online Consultation</p>
-              <p style={{ color: '#d1d9e0', fontSize: '0.95rem' }}>A focused session to apply the Dragonfly Model to your specific challenges.</p>
+        
+        {!isBooked ? (
+          <>
+            <h2 style={{ fontSize: '2.2rem', fontWeight: '700', marginBottom: '20px' }}>Dragonfly Strategy Sessions</h2>
+            <p style={{ color: '#aab7c4', marginBottom: '40px' }}>Select a time below. Payment is required to secure your session.</p>
+            
+            <div style={{ backgroundColor: '#ffffff', borderRadius: '15px', overflow: 'hidden', minHeight: '650px' }}>
+              
+              <InlineWidget url="https://calendly.com/nickwarn-nickwarnconsulting/30min" styles={{ height: '650px' }} />
             </div>
-            <a href="https://outlook.office.com/book/NickWarnConsulting1@NickWarnConsulting.onmicrosoft.com/s/5jJ_R2oPYUqEEdjhdaPZiA2?ismsaljsauthenabled" target="_blank" rel="noopener noreferrer" style={buttonStyle}>Book & Pay</a>
-          </div>
-          <div style={cardStyle}>
-            <div>
-              <h3 style={{ fontSize: '1.5rem' }}>Strategic Workshop</h3>
-              <p style={{ color: '#4a90e2', fontWeight: '700' }}>3.5 Hours • Intensive</p>
-              <p style={{ color: '#d1d9e0', fontSize: '0.95rem' }}>An immersive deep-dive for teams to integrate all four Dragonfly capabilities.</p>
+            
+            <div style={{ marginTop: '40px' }}>
+                <Link to="/" style={{ color: '#aab7c4', textDecoration: 'none' }}>← Back to Home</Link>
             </div>
-            <a href="https://outlook.office.com/book/NickWarnConsulting1@NickWarnConsulting.onmicrosoft.com/s/5jJ_R2oPYUqEEdjhdaPZiA2?ismsaljsauthenabled" target="_blank" rel="noopener noreferrer" style={buttonStyle}>Book & Pay</a>
+          </>
+        ) : (
+          <div style={{ padding: '60px 20px' }}>
+            <h2 style={{ fontSize: '3rem', color: '#4a90e2', marginBottom: '20px' }}>🎉 Thank You!</h2>
+            <h3 style={{ fontSize: '1.8rem', marginBottom: '20px' }}>Your session is confirmed.</h3>
+            <p style={{ fontSize: '1.2rem', color: '#d1d9e0', lineHeight: '1.6' }}>
+              We have received your payment. A calendar invitation with your 
+              <strong> Microsoft Teams link</strong> has been sent to your email address.
+            </p>
+            <Link to="/" style={{ backgroundColor: '#ffffff', color: '#1c3359', padding: '15px 30px', borderRadius: '10px', textDecoration: 'none', fontWeight: '700', display: 'inline-block', marginTop: '40px' }}>Return Home</Link>
           </div>
-        </div>
-        <Link to="/" style={{ color: '#aab7c4', textDecoration: 'none' }}>← Back to Home</Link>
+        )}
+
       </div>
       <Footer />
     </div>
@@ -83,7 +95,7 @@ const TermsPage = () => (
       <h2 style={{ fontSize: '2rem', marginBottom: '30px', textAlign: 'center' }}>Privacy & Terms of Service</h2>
       
       <h3 style={{ color: '#4a90e2' }}>1. Privacy Notice 🛡️</h3>
-      <p>We collect your <strong>name, email address, and company name</strong> to manage your booking. Data is processed via Microsoft 365 and Stripe. We do not store credit card details; these are encrypted by Stripe. You have the right to access or delete your data by contacting <strong>nickwarn1946@gmail.com</strong>.</p>
+      <p>We collect your <strong>name and email address</strong> to manage your booking. Data is processed via Calendly and Stripe. We do not store credit card details; these are encrypted by Stripe. You have the right to access or delete your data by contacting <strong>nickwarn1946@gmail.com</strong>.</p>
       
       <h3 style={{ color: '#4a90e2', marginTop: '30px' }}>2. Cancellation Policy ⏳</h3>
       <p>Cancellations or rescheduling requests made more than <strong>48 hours</strong> before your session are eligible for a full refund. Requests made within 48 hours are non-refundable but may be eligible for rescheduling at our discretion.</p>
