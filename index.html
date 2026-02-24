@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nick Warn Consulting | Strategic Consulting for an Uncertain World</title>
+  <meta name="description" content="Nick Warn Consulting offers strategic consulting services using the Dragonfly Strategy — The Art of Intelligent Agility in an Uncertain World. Helping SMEs navigate complexity with clarity and purpose." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0d1f3c;
+      --navy-mid:   #152b52;
+      --teal:       #2a9d8f;
+      --teal-light: #3ec9b8;
+      --gold:       #c9a84c;
+      --cream:      #f7f4ef;
+      --warm-grey:  #e8e3da;
+      --text-dark:  #1a1a2e;
+      --text-mid:   #4a5568;
+      --text-light: #718096;
+      --white:      #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 72px;
+      background: rgba(13, 31, 60, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(42, 157, 143, 0.25);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--teal-light); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--teal-light); }
+
+    .nav-cta {
+      background: var(--teal);
+      color: var(--white) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      transition: background 0.25s !important;
+    }
+    .nav-cta:hover { background: var(--teal-light) !important; color: var(--navy) !important; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 5vw 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 80% 40%, rgba(42,157,143,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,168,76,0.07) 0%, transparent 60%);
+    }
+
+    /* Dragonfly SVG watermark */
+    .hero-dragonfly {
+      position: absolute;
+      right: 4vw;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.07;
+      width: min(55vw, 600px);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 1px;
+      background: var(--teal-light);
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--teal-light);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: rgba(255,255,255,0.65);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--teal-light); color: var(--navy); transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: border-color 0.25s, color 0.25s, transform 0.2s;
+      cursor: pointer;
+    }
+    .btn-outline:hover { border-color: var(--teal-light); color: var(--teal-light); transform: translateY(-2px); }
+
+    .hero-credentials {
+      position: absolute;
+      bottom: 3rem;
+      left: 5vw;
+      right: 5vw;
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+
+    .credential-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+    }
+    .credential-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 6rem 5vw; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--teal);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 640px;
+      line-height: 1.8;
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--cream);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+
+    .about-portrait {
+      position: relative;
+    }
+    .portrait-frame {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .portrait-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(42,157,143,0.04) 2px,
+        rgba(42,157,143,0.04) 4px
+      );
+    }
+    .portrait-placeholder {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 0.05em;
+      position: relative;
+      z-index: 1;
+    }
+    .portrait-accent {
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      width: 5rem;
+      height: 5rem;
+      border: 2px solid var(--teal);
+      border-radius: 2px;
+      z-index: -1;
+    }
+
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .badge {
+      background: var(--navy);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+    }
+    .badge-teal { background: var(--teal); }
+
+    .about-text p {
+      color: var(--text-mid);
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--warm-grey);
+    }
+    .stat-item { text-align: center; }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    /* ─── SERVICES ─── */
+    #services {
+      background: var(--white);
+    }
+
+    .services-header {
+      max-width: 600px;
+      margin-bottom: 3.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: 3px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(13, 31, 60, 0.1);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle at top right, rgba(42,157,143,0.08), transparent 70%);
+    }
+
+    .service-icon {
+      width: 48px; height: 48px;
+      background: var(--navy);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .service-icon svg { width: 24px; height: 24px; color: var(--teal-light); }
+
+    .service-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .service-desc {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      margin-bottom: 1.5rem;
+    }
+    .price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .price-note {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .btn-service {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--navy);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.8rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .btn-service:hover { background: var(--teal); }
+    .btn-service-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid var(--navy);
+    }
+    .btn-service-outline:hover { background: var(--navy); color: var(--white); }
+
+    /* ─── DRAGONFLY STRATEGY ─── */
+    #dragonfly {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #dragonfly::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 80% at 95% 50%, rgba(42,157,143,0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 40% at 5% 20%, rgba(201,168,76,0.06) 0%, transparent 60%);
+    }
+
+    .dragonfly-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .dragonfly-text .section-label { color: var(--teal-light); }
+    .dragonfly-text .section-label::before { background: var(--teal-light); }
+    .dragonfly-text .section-title { color: var(--white); }
+
+    .dragonfly-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      margin: 1.5rem 0 2rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--teal);
+    }
+
+    .dragonfly-body {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .capability {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(42,157,143,0.2);
+      border-radius: 3px;
+      padding: 1.5rem;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .capability:hover {
+      background: rgba(42,157,143,0.08);
+      border-color: rgba(42,157,143,0.5);
+    }
+
+    .capability-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: rgba(42,157,143,0.3);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .capability-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--teal-light);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
+    }
+    .capability-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+    }
+
+    /* ─── BOOK ─── */
+    #book {
+      background: var(--cream);
+    }
+
+    .book-inner {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .book-cover {
+      width: 260px;
+      aspect-ratio: 2/3;
+      background: linear-gradient(160deg, var(--navy-mid) 0%, var(--navy) 100%);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 8px 12px 40px rgba(13,31,60,0.25), -2px 0 0 rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .book-cover::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 20px;
+      background: linear-gradient(to right, rgba(255,255,255,0.03), rgba(255,255,255,0.08));
+    }
+    .book-cover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 120% 80% at 70% 20%, rgba(42,157,143,0.18), transparent 60%);
+    }
+
+    .book-cover-top { position: relative; z-index: 1; }
+    .book-author {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 1rem;
+    }
+    .book-cover-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+    .book-cover-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.4;
+    }
+    .book-cover-bottom { position: relative; z-index: 1; }
+    .book-dragonfly-mark {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .book-content .section-label { margin-bottom: 0.5rem; }
+
+    .coming-soon-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .book-synopsis {
+      color: var(--text-mid);
+      font-size: 0.97rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .book-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .book-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+    }
+    .book-feature::before {
+      content: '→';
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05em;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      margin-top: 3.5rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .contact-info p {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .contact-item-icon {
+      width: 40px; height: 40px;
+      background: var(--cream);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-item-icon svg { width: 18px; height: 18px; color: var(--teal); }
+    .contact-item-text {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+    }
+    .contact-item-text a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+    .contact-item-text a:hover { text-decoration: underline; }
+
+    .contact-form {
+      background: var(--cream);
+      padding: 2.5rem;
+      border-radius: 3px;
+    }
+    .contact-form h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.75rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      background: var(--white);
+      border: 1px solid var(--warm-grey);
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--teal); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      padding: 3rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      border-top: 1px solid rgba(42,157,143,0.2);
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .footer-brand span { color: var(--teal-light); }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--teal-light); }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.78rem;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-portrait { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .dragonfly-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .book-inner { grid-template-columns: 1fr; }
+      .book-cover { width: 200px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 4vw; }
+      .nav-links { display: none; }
+      section { padding: 4rem 4vw; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .capabilities-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav>
+    <a href="#hero" class="nav-logo">Nick Warn <span>Consulting</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#dragonfly">The Model</a></li>
+      <li><a href="#book">The Book</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+
+    <!-- Dragonfly SVG watermark -->
+    <svg class="hero-dragonfly" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Body -->
+      <ellipse cx="200" cy="150" rx="8" ry="80" fill="white"/>
+      <!-- Head -->
+      <circle cx="200" cy="68" r="14" fill="white"/>
+      <!-- Upper wings -->
+      <ellipse cx="200" cy="120" rx="110" ry="48" fill="white" transform="rotate(-8 200 120)" opacity="0.8"/>
+      <ellipse cx="200" cy="120" rx="110" ry="48" fill="white" transform="rotate(8 200 120)" opacity="0.8"/>
+      <!-- Lower wings -->
+      <ellipse cx="200" cy="150" rx="85" ry="38" fill="white" transform="rotate(-12 200 150)" opacity="0.6"/>
+      <ellipse cx="200" cy="150" rx="85" ry="38" fill="white" transform="rotate(12 200 150)" opacity="0.6"/>
+      <!-- Eyes -->
+      <circle cx="193" cy="64" r="5" fill="white" opacity="0.3"/>
+      <circle cx="207" cy="64" r="5" fill="white" opacity="0.3"/>
+      <!-- Antennae -->
+      <line x1="196" y1="56" x2="185" y2="42" stroke="white" stroke-width="1.5"/>
+      <line x1="204" y1="56" x2="215" y2="42" stroke="white" stroke-width="1.5"/>
+    </svg>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Strategic Consulting</div>
+      <h1 class="hero-title">
+        Strategy for a World<br />
+        That Won't<br />
+        <em>Stand Still</em>
+      </h1>
+      <p class="hero-sub">
+        Helping SMEs navigate complexity, uncertainty and change — with clarity, purpose and intelligent agility.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Explore Services</a>
+        <a href="#dragonfly" class="btn-outline">The Dragonfly Model</a>
+      </div>
+    </div>
+
+    <div class="hero-credentials">
+      <div class="credential-item"><span class="credential-dot"></span>30+ Years in Management Consulting</div>
+      <div class="credential-item"><span class="credential-dot"></span>Chartered Engineer · Certified Management Consultant</div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─── -->
+  <section id="about">
+    <div class="section-label">About Nick</div>
+    <h2 class="section-title">Experience You Can<br />Actually Rely On</h2>
+
+    <div class="about-grid">
+      <div class="about-portrait">
+        <div class="portrait-frame">
+          <div class="portrait-placeholder">NW</div>
+        </div>
+        <div class="portrait-accent"></div>
+        <div class="about-badges">
+          <span class="badge badge-teal">Certified Management Consultant</span>
+          <span class="badge">Chartered Engineer</span>
+          <span class="badge">Fellow, UK IoC</span>
+          <span class="badge">Chair, ICMCI</span>
+        </div>
+      </div>
+
+      <div class="about-text reveal">
+        <p>
+          Nicholas Warn (Nick) is a Chartered Engineer and Certified Management Consultant with over three decades of experience helping organisations transform and perform. He is a Fellow of the UK Institute of Consulting, and currently serves as Chair of the International Council of Management Consulting Institutes (ICMCI) — the global body for the consulting profession — where he also represents the ICMCI Board on its accreditation body, the Institute Quality Assurance (IQA).
+        </p>
+        <p>
+          In that role, Nick has been instrumental in developing and publishing the global competence framework for individual consultants, the Code of Professional Conduct, and the implementation framework for applying the ISO 20700 Guidance Standard for management consultancy services.
+        </p>
+        <p>
+          Nick founded his consultancy practice in 1990, working across multiple sectors in business transformation and performance improvement, with international collaborations in Eastern Europe and the Middle East. Before entering consultancy, he built a successful industrial career with Dunlop across the UK, India and Germany, before becoming a Director of companies in the packaging and security printing sectors.
+        </p>
+        <p>
+          Alongside his consulting work, Nick is a Director of a Hampshire-based charity providing furniture and household essentials for people in need, and offering training and work experience to volunteers entering employment. He is married with two grown-up children and four grandsons — and when he's not at the strategy table, you'll find him on the golf course or in the vegetable garden.
+        </p>
+
+        <div class="about-stats">
+          <div class="stat-item">
+            <span class="stat-number">30+</span>
+            <span class="stat-label">Years Consulting</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">1990</span>
+            <span class="stat-label">Practice Founded</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">Global</span>
+            <span class="stat-label">Reach &amp; Experience</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section id="services">
+    <div class="services-header reveal">
+      <div class="section-label">Work With Nick</div>
+      <h2 class="section-title">Three Ways to Get Started</h2>
+      <p class="section-intro">Every engagement starts with a conversation. Choose the format that suits you best, or <a href="#contact" style="color:var(--teal);">get in touch</a> and we'll figure it out together.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Introductory Session -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.9L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+          </svg>
+        </div>
+        <div class="service-title">Introductory Online Session</div>
+        <p class="service-desc">
+          A focused one-to-one online conversation to explore your strategic challenges, understand where you are now, and identify where Dragonfly Strategy could make a real difference. No jargon. No sales pitch. Just an honest, useful discussion.
+        </p>
+        <div class="service-price">
+          <span class="price-amount">£100</span>
+          <span class="price-note">/ session</span>
+        </div>
+        <!-- Replace the href below with your actual Stripe Payment Link -->
+        <a href="YOUR_STRIPE_PAYMENT_LINK_INTRODUCTORY" class="btn-service" target="_blank">Book &amp; Pay Online</a>
+      </div>
+
+      <!-- Diagnostic Visit -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="service-title">Diagnostic Onsite Visit</div>
+        <p class="service-desc">
+          A hands-on, on-site visit to your organisation. Nick will spend time with you and your team to conduct a structured strategic diagnostic — assessing your current position, the challenges you face, and the opportunities available to you using the Dragonfly framework.
+        </p>
+        <div class="service-price">
+          <span class="price-amount">£500</span>
+          <span class="price-note">+ travel expenses</span>
+        </div>
+        <!-- Replace the href below with your actual Stripe Payment Link -->
+        <a href="YOUR_STRIPE_PAYMENT_LINK_DIAGNOSTIC" class="btn-service" target="_blank">Book &amp; Pay Online</a>
+      </div>
+
+      <!-- The Book -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+        </div>
+        <div class="service-title">Dragonfly Strategy — The Book</div>
+        <p class="service-desc">
+          Nick's forthcoming book — <em>Dragonfly Strategy: The Art of Intelligent Agility in an Uncertain World</em> — brings the full framework to life across 22 chapters, from strategic diagnosis through to leadership mastery. Register your interest to be notified on publication.
+        </p>
+        <div class="service-price">
+          <span class="price-amount">Coming</span>
+          <span class="price-note">&nbsp;soon</span>
+        </div>
+        <a href="#book" class="btn-service btn-service-outline">Register Interest</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── DRAGONFLY STRATEGY ─── -->
+  <section id="dragonfly">
+    <div class="dragonfly-inner">
+      <div class="dragonfly-text reveal">
+        <div class="section-label">The Model</div>
+        <h2 class="section-title">Dragonfly Strategy</h2>
+        <p class="dragonfly-quote">
+          "Three hundred million years of evolutionary refinement. One creature that never went extinct. Not through size or strength — through intelligent agility."
+        </p>
+        <p class="dragonfly-body">
+          The world has changed. Traditional strategy hasn't kept up. Built for slower, more predictable environments, conventional planning frameworks actively mislead when volatility becomes the norm.
+        </p>
+        <p class="dragonfly-body">
+          Dragonfly Strategy is a new and innovative consulting model — forged for turbulence. It translates the dragonfly's extraordinary biological capabilities into a practical leadership system: one that helps organisations see more clearly, move more intelligently, focus more purposefully, and collaborate more effectively.
+        </p>
+        <a href="#book" class="btn-primary" style="margin-top:0.5rem;">Discover the Book</a>
+      </div>
+
+      <div class="capabilities-grid reveal">
+        <div class="capability">
+          <div class="capability-number">01</div>
+          <div class="capability-title">Multi-Perspective Vision</div>
+          <p class="capability-desc">See systems rather than symptoms. Detect weak signals before they become obvious threats or missed opportunities.</p>
+        </div>
+        <div class="capability">
+          <div class="capability-number">02</div>
+          <div class="capability-title">Adaptive Movement</div>
+          <p class="capability-desc">Change direction without creating chaos. Pivot with precision rather than lurching from crisis to crisis.</p>
+        </div>
+        <div class="capability">
+          <div class="capability-number">03</div>
+          <div class="capability-title">Purposeful Focus</div>
+          <p class="capability-desc">Ensure agility serves meaning — not just reaction. Know what matters, pursue it relentlessly, resist fragmentation.</p>
+        </div>
+        <div class="capability">
+          <div class="capability-number">04</div>
+          <div class="capability-title">Collaborative Flight</div>
+          <p class="capability-desc">Build trust-based relationships across cultures and sectors that enable coordinated action in complex environments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BOOK ─── -->
+  <section id="book">
+    <div class="section-label reveal">Coming Soon</div>
+    <h2 class="section-title reveal">The Book</h2>
+
+    <div class="book-inner">
+      <div class="book-cover reveal">
+        <div class="book-cover-top">
+          <div class="book-author">Nick Warn</div>
+          <div class="book-cover-title">Dragonfly<br/>Strategy</div>
+          <div class="book-cover-subtitle">The Art of Intelligent Agility in an Uncertain World</div>
+        </div>
+        <div class="book-cover-bottom">
+          <div class="book-dragonfly-mark">
+            <svg width="24" height="20" viewBox="0 0 24 20" fill="none">
+              <ellipse cx="12" cy="10" rx="2" ry="8" fill="rgba(62,201,184,0.6)"/>
+              <ellipse cx="12" cy="7" rx="8" ry="3.5" fill="rgba(62,201,184,0.35)" transform="rotate(-8 12 7)"/>
+              <ellipse cx="12" cy="7" rx="8" ry="3.5" fill="rgba(62,201,184,0.35)" transform="rotate(8 12 7)"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-content reveal">
+        <span class="coming-soon-badge">Publication Forthcoming</span>
+        <p class="book-synopsis">
+          <strong>The world has changed. Strategy hasn't caught up.</strong>
+        </p>
+        <p class="book-synopsis">
+          Traditional strategic planning was built for a world that moved slowly and rewarded prediction. That world is gone. Today's leaders face volatility that invalidates five-year plans before the ink dries, complexity that defies linear thinking, and change that accelerates faster than organisational reflexes can follow.
+        </p>
+        <p class="book-synopsis">
+          Drawing on global consulting practice and Nick's decades of experience across industries and cultures, <em>Dragonfly Strategy</em> spans 22 chapters — from strategic diagnosis to leadership mastery, from ethical decision-making to practical toolkits for facilitation and assessment.
+        </p>
+
+        <div class="book-features">
+          <div class="book-feature">Four integrated capabilities that produce genuine organisational agility</div>
+          <div class="book-feature">Practical toolkits: facilitation methods, diagnostic frameworks, action templates</div>
+          <div class="book-feature">Case studies from multiple industries and cultures</div>
+          <div class="book-feature">Reflective exercises to make concepts personally applicable</div>
+          <div class="book-feature">The future of leadership in a digitally transformed, geopolitically volatile world</div>
+        </div>
+
+        <!-- Book interest form -->
+        <div style="background: var(--cream); padding: 1.5rem; border-radius: 3px; border-left: 3px solid var(--teal);">
+          <p style="font-size:0.9rem; color:var(--text-mid); margin-bottom:1rem;">
+            <strong style="color:var(--navy);">Register your interest</strong> — be the first to know when the book is available.
+          </p>
+          <form id="book-form" onsubmit="handleBookInterest(event)" style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+            <input type="text" placeholder="Your name" id="book-name" required
+              style="flex:1; min-width:160px; padding:0.7rem 1rem; font-family:'Jost',sans-serif; font-size:0.9rem; border:1px solid var(--warm-grey); border-radius:2px; outline:none;" />
+            <input type="email" placeholder="Your email address" id="book-email" required
+              style="flex:2; min-width:200px; padding:0.7rem 1rem; font-family:'Jost',sans-serif; font-size:0.9rem; border:1px solid var(--warm-grey); border-radius:2px; outline:none;" />
+            <button type="submit" class="btn-primary" style="white-space:nowrap;">Notify Me</button>
+          </form>
+          <p id="book-success" style="display:none; color:var(--teal); font-size:0.88rem; margin-top:0.75rem; font-weight:500;">
+            ✓ Thank you — we'll be in touch when the book is published.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Let's Have<br/>an Honest Conversation</h2>
+        <p>
+          Whether you have a specific challenge in mind or you're not quite sure where to start, Nick is happy to talk it through. No sales pressure — just a straightforward conversation about what might actually help.
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <a href="mailto:Nickwarn@nickwarnconsulting.onmicrosoft.com">nick@nickwarnconsulting.com</a><br/>
+              <span style="font-size:0.8rem; color:var(--text-light);">(primary business contact)</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <a href="tel:07989740161">07989 740161</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">Hampshire, United Kingdom<br/><span style="font-size:0.8rem;color:var(--text-light);">Available nationally &amp; internationally</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <h3>Send a Message</h3>
+        <form id="contact-form" onsubmit="handleContact(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="jane@yourcompany.com" required />
+          </div>
+          <div class="form-group">
+            <label>Organisation</label>
+            <input type="text" placeholder="Your company name" />
+          </div>
+          <div class="form-group">
+            <label>I'm interested in…</label>
+            <select>
+              <option value="">Please select</option>
+              <option>Introductory Online Session (£100)</option>
+              <option>Diagnostic Onsite Visit (£500 + expenses)</option>
+              <option>Dragonfly Strategy Book — Register Interest</option>
+              <option>General Enquiry / Something Else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell me a bit about what you're working on or what you're facing…"></textarea>
+          </div>
+          <button type="submit" class="btn-primary form-submit">Send Message</button>
+          <p id="contact-success" style="display:none; color:var(--teal); font-size:0.88rem; margin-top:0.75rem; font-weight:500;">
+            ✓ Message sent — Nick will be in touch shortly.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-brand">Nick Warn <span>Consulting</span></div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#dragonfly">The Model</a></li>
+      <li><a href="#book">The Book</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2025 Nick Warn Consulting. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // stagger siblings
+          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, idx * 120);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Book interest form
+    function handleBookInterest(e) {
+      e.preventDefault();
+      // TODO: wire to your email/CRM/Netlify form
+      document.getElementById('book-form').style.display = 'none';
+      document.getElementById('book-success').style.display = 'block';
+    }
+
+    // Contact form
+    function handleContact(e) {
+      e.preventDefault();
+      // TODO: wire to Netlify Forms (add name="contact" data-netlify="true" to the form tag) or EmailJS
+      document.getElementById('contact-form').querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
+      document.getElementById('contact-success').style.display = 'block';
+    }
+
+    // Smooth active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current
+          ? 'var(--teal-light)' : '';
+      });
+    });
+  </script>
+
+</body>
+        </html>
+
