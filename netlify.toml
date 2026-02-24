@@ -1,0 +1,7 @@
+[build]
+  publish = "public"
+  command = ""
+  ignore = "exit 0"
+
+[functions]
+  directory = ""
