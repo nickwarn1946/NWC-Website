@@ -276,37 +276,20 @@
     }
 
     /* ─── ABOUT ─── */
-    #about {
-      background: var(--cream);
-    }
-.about-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1.5rem;
+#about {
+  background: var(--cream);
 }
-.badge {
-  background: var(--navy);
-  color: rgba(255,255,255,0.8);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  padding: 0.35rem 0.9rem;
-  border-radius: 2px;
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 5rem;
+  align-items: start;
+  margin-top: 3.5rem;
 }
-.badge-teal { background: var(--teal); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 5rem;
-      align-items: start;
-      margin-top: 3.5rem;
-    }
-
-    .about-portrait {
-      position: relative;
-    }
-    .portrait-frame {
+.about-portrait {
+  position: relative;
+}
+.portrait-frame {
   width: 280px;
   aspect-ratio: 3/4;
   background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
@@ -316,28 +299,16 @@
   justify-content: center;
   overflow: hidden;
   position: relative;
-    }
-    .portrait-frame::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 2px,
-        rgba(42,157,143,0.04) 2px,
-        rgba(42,157,143,0.04) 4px
-      );
-    }
-    .portrait-placeholder {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 4rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.15);
-      letter-spacing: 0.05em;
-      position: relative;
-      z-index: 1;
-    }
+}
+.portrait-placeholder {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+}
     .portrait-accent {
       position: absolute;
       bottom: -1rem;
